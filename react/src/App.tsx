@@ -1,3 +1,5 @@
+import './styles/main.css'
+
 interface ButtonProps {
   title?: string;
   color?: string;
@@ -13,9 +15,7 @@ function Button (props: ButtonProps) {
 
 function App() {
   return (
-    <div>
-  <h1>Hello Word</h1>
-      <Button title="Enviar 1"/>
+    <div className='w-8 h-8 bg-black dark:bg-red-600'>
   </div>
   )
   }
