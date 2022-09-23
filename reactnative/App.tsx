@@ -25,7 +25,8 @@ export default function App() {
       <StatusBar style="light"
       backgroundColor='transparent'
       />
-    {fontsLoaded ? <Home/> : <Loading /> }
+    {/* {fontsLoaded ? <Home/> : <Loading /> } */}
+    <Home />
       </Background>
   
   );
