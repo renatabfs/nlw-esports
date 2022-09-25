@@ -14,6 +14,7 @@ model Game {
   id String @id
   title String
   bannerUrl String
+  Ad  Ad[]
 }
 
 model Ad {
@@ -27,4 +28,7 @@ model Ad {
   hourEnd Int
   useVoiceChannel Boolean
   createdAd DateTime @default(now())
+
+  game Game @relation(fields: [gameId], references: [id])
+ 
 }
