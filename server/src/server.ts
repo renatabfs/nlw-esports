@@ -22,14 +22,14 @@ app.get('/games', async (request, response) => {
 app.post('/ads', (request, response) => {
    return response.status(201).json([]);
 })
-app.get('/games/:id/ads', (request, response) => {
+app.get('/games/:id/ads', async (request, response) => {
    const gameId = request.params.id;
-   
-   return response.json([
-    {id: 1, name: 'Ad 1'},
-    {id: 2, name: 'Ad 2'},
-    {id: 3, name: 'Ad 3'},
-   ])
+   const ads = await prisma.ad.findMany({
+      where: {
+         gameId,
+      }
+   }) 
+   return response.json(ads)
 })
 
 app.get('/ads/:id/discord', (request, response) => {
