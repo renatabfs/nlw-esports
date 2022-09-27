@@ -5,6 +5,7 @@ import { CreateAdBanner } from './components/CreateAdBanner'
 import {useState, useEffect} from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { GameController } from 'phosphor-react'
+import { Input } from './components/Form/Input'
 
 interface Game {
   title: string
@@ -56,23 +57,24 @@ function App() {
       <Dialog.Overlay className='bg-black/60 inset-0 fixed'/>
 
       <Dialog.Content className='fixed bg-[#2A2634] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25'>
-      <Dialog.Title text-3xl font-black>Publique um anúncio</Dialog.Title>
-      <Dialog.Content>
-       <form>
-        <div>
-        <label htmlFor='game'> Qual o game?</label>
-        <input id = 'game' placeholder='Selecione o game que deseja jogar'/>
+      <Dialog.Title className='text-3xl font-black'>Publique um anúncio</Dialog.Title>
+       <form className='mt-8'>
+        <div className='flex flex-col gap-2'>
+        <label htmlFor='game' className='font-semibold' > Qual o game?</label>
+        <Input 
+        id = 'game' 
+        placeholder='Selecione o game que deseja jogar'/>
         <label htmlFor='name'> Seu nome (ou nickname)</label>
-        <input id = 'name' placeholder='Como te chamam dentro do jogo?'/>
+        <Input id = 'name' placeholder='Como te chamam dentro do jogo?'/>
         </div>
         <div>
-          <div>
+          <div className=''>
           <label htmlFor='yearsPlaying'>Joga há quantos anos?</label>
-          <input id ='yearsPlaying' type="number" placeholder ="Tudo bem ser ZERO" />
+          <Input id ='yearsPlaying' type="number" placeholder ="Tudo bem ser ZERO" />
           </div>
           <div>
           <label htmlFor='discord'>Qual seu discord?</label>
-          <input id = 'discord' type="text" placeholder='usuário#0000' />
+          <Input id = 'discord' type="text" placeholder='usuário#0000' />
           </div>
         </div>
         <div>
@@ -82,13 +84,13 @@ function App() {
           <div>
             <label htmlFor='hourStart'>Qual horário do dia?</label>
             <div>
-            <input id ='hourStart' type='time' placeholder='De' />
-            <input id ='hourEnd' type='time' placeholder='Até' />
+            <Input id ='hourStart' type='time' placeholder='De' />
+            <Input id ='hourEnd' type='time' placeholder='Até' />
             </div>
           </div>
         </div>
         <div>
-          <input type ='checkbox'/>
+          <Input type ='checkbox'/>
           Costumo me conectar ao chat de voz
         </div>
         <footer>
@@ -97,7 +99,6 @@ function App() {
         </footer>
 
        </form>
-      </Dialog.Content>
       </Dialog.Content>
       </Dialog.Portal>
       </Dialog.Root>
