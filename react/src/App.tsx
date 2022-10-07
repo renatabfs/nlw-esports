@@ -21,7 +21,8 @@ function App() {
   const [games, setGames] = useState <Game[]>([])
 
   useEffect (() => {
-    fetch('http://localhost:3333/games')
+    fetch('https://3333-renatabfs-nlwesports-k2dmsbz6w22.ws-us70.gitpod.io/games')
+    // fetch('https://localhost:3333/games')
     .then (response => response.json())
     .then (data => {
       setGames(data)
