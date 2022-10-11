@@ -5,7 +5,7 @@ import { Heading } from "../../components/Heading";
 import { styles } from "./styles";
 import { useEffect, useState } from "react";
 import React from "react";
-
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export function Home() {
   const [games, setGames] = useState<GameCardProps[]>([])
@@ -17,7 +17,7 @@ export function Home() {
   }, [])
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Image source = {logoImg}
       style = {styles.logo}
       />
@@ -38,6 +38,6 @@ export function Home() {
       showsHorizontalScrollIndicator = {false}
       contentContainerStyle = {styles.contentList}
       />
-    </View>
+    </SafeAreaView>
   );
 }
