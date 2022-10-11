@@ -8,4 +8,6 @@ export function Games () {
         <SafeAreaView style= {styles.container}>
 
         </SafeAreaView>
+
     )
+}
