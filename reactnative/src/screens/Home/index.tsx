@@ -6,6 +6,7 @@ import { styles } from "./styles";
 import { useEffect, useState } from "react";
 import React from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { Background } from "../../components/Background";
 
 export function Home() {
   const [games, setGames] = useState<GameCardProps[]>([])
@@ -17,7 +18,7 @@ export function Home() {
   }, [])
 
   return (
-    <SafeAreaProvider>
+    <Background>
     <SafeAreaView style={styles.container}>
       <Image source = {logoImg}
       style = {styles.logo}
@@ -40,6 +41,6 @@ export function Home() {
       contentContainerStyle = {styles.contentList}
       />
     </SafeAreaView>
-    </SafeAreaProvider>
+    </Background>
   );
 }
