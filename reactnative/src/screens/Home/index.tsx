@@ -11,7 +11,7 @@ export function Home() {
   const [games, setGames] = useState<GameCardProps[]>([])
   
   useEffect(() =>{
-    fetch('https://3333-renatabfs-nlwesports-k2dmsbz6w22.ws-us70.gitpod.io/games')
+    fetch('http://192.168.1.107:3000/games')
     .then(response => response.json())
     .then(data => setGames(data))
   }, [])
