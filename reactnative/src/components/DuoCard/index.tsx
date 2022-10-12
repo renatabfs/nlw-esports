@@ -1,8 +1,8 @@
 import React from "react";
-import { TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View, Text } from "react-native";
 import { THEME } from "../../theme";
 import { DuoInfo } from "../DuoInfo";
-import { GameController} from 'phosphor-react-native'
+import { GameController } from "phosphor-react-native";
 import { styles } from "./styles";
 
 export interface DuoCardProps {
@@ -17,9 +17,10 @@ export interface DuoCardProps {
 
 interface Props {
   data: DuoCardProps;
+  onConnect: () => void;
 }
 
-export function DuoCard({ data }: Props) {
+export function DuoCard({ data, onConnect }: Props) {
   return (
     <View style={styles.container}>
       <DuoInfo label="Nome" value={data.name} />
@@ -36,8 +37,9 @@ export function DuoCard({ data }: Props) {
         }
       />
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={onConnect}>
         <GameController />
+        <Text style={styles.buttonTitle}>Conectar</Text>
       </TouchableOpacity>
     </View>
   );
