@@ -13,7 +13,6 @@ import { Loading } from './src/components/Loading';
 
 export default function App() {
   const [fontsLoaded] = useFonts ({
-    useFonts,
   Inter_400Regular,
   Inter_600SemiBold,
   Inter_700Bold,
@@ -22,7 +21,8 @@ export default function App() {
 
   return (
       <Background>
-      <StatusBar style="light"
+      <StatusBar
+      style="dark"
       backgroundColor='transparent'
       />
     {/* {fontsLoaded ? <Home/> : <Loading /> } */}
