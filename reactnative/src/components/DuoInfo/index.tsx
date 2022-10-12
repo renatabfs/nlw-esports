@@ -16,7 +16,7 @@ export function DuoInfo({ label, value, colorValue = THEME.COLORS.TEXT }: Props)
       <Text 
       numberOfLines = {1}
       style={styles.label}>{label}</Text>
-      <Text style={styles.value}>{value}</Text>
+      <Text style={[styles.value , {color: colorValue}]}>{value}</Text>
     </View>
   );
 }
