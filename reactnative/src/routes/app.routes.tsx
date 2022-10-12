@@ -17,7 +17,7 @@ export function AppRoutes () {
             />
 
             <Screen 
-            name = "ames"
+            name = "game"
             component = {Games}
             />
         </Navigator>
