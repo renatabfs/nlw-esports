@@ -16,45 +16,65 @@ export function CreateAdModal() {
 
                     <div className='flex flex-col gap-2'>
                         <label htmlFor='game' className='font-semibold' > Qual o game?</label>
-                        <Select.Root defaultValue='Selecione o game que deseja jogar'>
-                            <Select.Trigger>
-                                <button>
-                                    <Select.Value />
-                                    <Select.Icon>
-                                        <CaretDown className="w-4 h-4" />
-                                    </Select.Icon>
-                                </button>
+                        <Select.Root>
+                            <Select.Trigger aria-label="game"  className="bg-zinc-900 py-3 px-4 rounded text-small placeholder:text-zinc-500 flex gap-2" >
+                                <Select.Value placeholder='Selecione o game que deseja jogar' />
+                                <Select.Icon className="flex place-items-center">
+                                    <CaretDown className="w-4 h-4 flex justify-center" />
+                                </Select.Icon>
                             </Select.Trigger>
 
                             <Select.Portal>
                                 <Select.Content>
-                                    <Select.ScrollUpButton >
+                                    <Select.ScrollUpButton className="flex place-items-center" >
                                         <CaretUp className="w-4 h-4" />
                                     </Select.ScrollUpButton>
-                                    <Select.Viewport className='bg-zinc-900 py-3 px-4 rounded text-small placeholder:text-zinc-500'>
-                                        <Select.Item>
-                                            <Select.ItemText />
-                                            <Select.ItemIndicator />
-                                        </Select.Item>
-
-                                        <Select.Group>{["League of Legends", "Valorant", "CS:GO", "Genshin Impact", "Fortnite"].map(
-                                            (f, i) => (
-                                                <Select.Item
-                                                    disabled={f === "Grapes"}
-                                                    key={`${f}-${i}`}
-                                                    value={f.toLowerCase()}
-                                                    className=
-                                                        "relative flex items-center px-8 py-2 rounded-md text-sm text-gray-700 dark:text-gray-300 font-medium focus:bg-gray-100 dark:focus:bg-gray-900"
-                                                    
-                                                >
-                                                    <Select.ItemText>{f}</Select.ItemText>
-                                                    <Select.ItemIndicator className="absolute left-2 inline-flex items-center">
-                                                        <Check/>
-                                                    </Select.ItemIndicator>
-                                                </Select.Item>
-                                            )
-                                        )}
-                                        </Select.Group>
+                                    <Select.Viewport className='bg-zinc-900 py-3 px-4 rounded text-base text-white placeholder:text-zinc-500 font-thin'>
+                                        <Select.Group>
+                                            <Select.Label className="text-sm font-medium">Games</Select.Label>
+                                            <Select.Item value="League">
+                                            <Select.ItemText>League of Legends</Select.ItemText>
+                                            <Select.ItemIndicator>
+                                                <Check/>
+                                            </Select.ItemIndicator>
+                                            </Select.Item>
+                                            <Select.Item value="Genshin">
+                                            <Select.ItemText>Genshin Impact</Select.ItemText>
+                                            <Select.ItemIndicator>
+                                                <Check/>
+                                            </Select.ItemIndicator>
+                                            </Select.Item>
+                                            <Select.Item value="Fortnite">
+                                            <Select.ItemText>Fortnite</Select.ItemText>
+                                            <Select.ItemIndicator>
+                                                <Check/>
+                                            </Select.ItemIndicator>
+                                            </Select.Item>
+                                            <Select.Item value="CS:GO">
+                                            <Select.ItemText>CS:GO</Select.ItemText>
+                                            <Select.ItemIndicator>
+                                                <Check/>
+                                            </Select.ItemIndicator>
+                                            </Select.Item>
+                                            <Select.Item value="Valorant">
+                                            <Select.ItemText>Valorant</Select.ItemText>
+                                            <Select.ItemIndicator>
+                                                <Check/>
+                                            </Select.ItemIndicator>
+                                            </Select.Item>
+                                            <Select.Item value="World of Warcraft">
+                                            <Select.ItemText>World of Warcraft</Select.ItemText>
+                                            <Select.ItemIndicator>
+                                                <Check/>
+                                            </Select.ItemIndicator>
+                                            </Select.Item>
+                                            <Select.Item value="Apex Legends">
+                                            <Select.ItemText>Apex Legends</Select.ItemText>
+                                            <Select.ItemIndicator>
+                                                <Check/>
+                                            </Select.ItemIndicator>
+                                            </Select.Item>
+                                            </Select.Group>
                                         <Select.Separator />
                                     </Select.Viewport>
                                     <Select.ScrollDownButton />
