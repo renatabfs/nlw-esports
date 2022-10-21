@@ -3,8 +3,25 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { Input } from "./Form/Input";
 import * as Checkbox from '@radix-ui/react-checkbox'
 import * as Select from "@radix-ui/react-select";
+import { useEffect, useState } from "react";
+
+interface Game {
+    title: string
+    id: string
+
+}
 
 export function CreateAdModal() {
+    const [games, setGames] = useState<Game[]>([])
+
+    useEffect(() => {
+        fetch('https://4000-renatabfs-nlwesports-k2dmsbz6w22.ws-us72.gitpod.io/games')
+            // fetch('https://localhost:3333/games')
+            .then(response => response.json())
+            .then(data => {
+                setGames(data)
+            })
+    }, [])
     return (
         <Dialog.Portal>
 
@@ -17,64 +34,31 @@ export function CreateAdModal() {
                     <div className='flex flex-col gap-2'>
                         <label htmlFor='game' className='font-semibold' > Qual o game?</label>
                         <Select.Root>
-                            <Select.Trigger aria-label="game"  className="bg-zinc-900 py-3 px-4 rounded text-small placeholder:text-zinc-500 flex gap-2" >
+                            <Select.Trigger aria-label="game" className="bg-zinc-900 py-3 px-4 rounded text-small placeholder:text-zinc-500 flex gap-2 flex items-center" >
                                 <Select.Value placeholder='Selecione o game que deseja jogar' />
-                                <Select.Icon className="flex place-items-center">
-                                    <CaretDown className="w-4 h-4 flex justify-center" />
+                                <Select.Icon>
+                                    <CaretDown className="w-4 h-4 flex items-center" />
                                 </Select.Icon>
                             </Select.Trigger>
 
                             <Select.Portal>
                                 <Select.Content>
-                                    <Select.ScrollUpButton className="flex place-items-center" >
+                                    <Select.ScrollUpButton className="flex" >
                                         <CaretUp className="w-4 h-4" />
                                     </Select.ScrollUpButton>
                                     <Select.Viewport className='bg-zinc-900 py-3 px-4 rounded text-base text-white placeholder:text-zinc-500 font-thin'>
                                         <Select.Group>
-                                            <Select.Label className="text-sm font-medium">Games</Select.Label>
-                                            <Select.Item value="League">
-                                            <Select.ItemText>League of Legends</Select.ItemText>
-                                            <Select.ItemIndicator>
-                                                <Check/>
-                                            </Select.ItemIndicator>
-                                            </Select.Item>
-                                            <Select.Item value="Genshin">
-                                            <Select.ItemText>Genshin Impact</Select.ItemText>
-                                            <Select.ItemIndicator>
-                                                <Check/>
-                                            </Select.ItemIndicator>
-                                            </Select.Item>
-                                            <Select.Item value="Fortnite">
-                                            <Select.ItemText>Fortnite</Select.ItemText>
-                                            <Select.ItemIndicator>
-                                                <Check/>
-                                            </Select.ItemIndicator>
-                                            </Select.Item>
-                                            <Select.Item value="CS:GO">
-                                            <Select.ItemText>CS:GO</Select.ItemText>
-                                            <Select.ItemIndicator>
-                                                <Check/>
-                                            </Select.ItemIndicator>
-                                            </Select.Item>
-                                            <Select.Item value="Valorant">
-                                            <Select.ItemText>Valorant</Select.ItemText>
-                                            <Select.ItemIndicator>
-                                                <Check/>
-                                            </Select.ItemIndicator>
-                                            </Select.Item>
-                                            <Select.Item value="World of Warcraft">
-                                            <Select.ItemText>World of Warcraft</Select.ItemText>
-                                            <Select.ItemIndicator>
-                                                <Check/>
-                                            </Select.ItemIndicator>
-                                            </Select.Item>
-                                            <Select.Item value="Apex Legends">
-                                            <Select.ItemText>Apex Legends</Select.ItemText>
-                                            <Select.ItemIndicator>
-                                                <Check/>
-                                            </Select.ItemIndicator>
-                                            </Select.Item>
-                                            </Select.Group>
+                                            {games.map(game => {
+                                                return (
+                                                    <Select.Item key={game.id} value={game.id} className='flex items-center justify-between py-2 px-3 m-1 bg-zinc-900 text-zinc-500 cursor-pointer rounded hover:bg-zinc-800 hover:text-white'>
+                                                        <Select.ItemText>{game.title}</Select.ItemText>
+                                                        <Select.ItemIndicator className='ml-4'>
+                                                            <Check size={24} className='text-emerald-600' />
+                                                        </Select.ItemIndicator>
+                                                    </Select.Item>
+                                                )
+                                            })}
+                                        </Select.Group>
                                         <Select.Separator />
                                     </Select.Viewport>
                                     <Select.ScrollDownButton />
